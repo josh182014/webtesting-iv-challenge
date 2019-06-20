@@ -35,8 +35,8 @@ describe('delete()', () => {
 
     it('should respond a 404 if instructor is not found', async () => {
         await supertest(server)
-        .del('/api/instuctors/1')
-        expect(404)
+        .del('/api/instuctors/4090324')
+        .expect(404)
     })
 
     it('should respond a 200 if deleted successfully', async () => {
