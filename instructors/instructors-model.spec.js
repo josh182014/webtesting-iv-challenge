@@ -9,6 +9,13 @@ afterEach(async () => {
     await db('instructors').truncate()
 })
 
+describe('instructors model', ()=> {
+      // that process.env.DB_ENV is pointing to 'testing'
+  it('should set environment to testing', () => {
+    expect(process.env.DB_ENV).toBe('testing');
+  });
+})
+
 describe('insert()', () => {
     it('should insert instructor', async () => {
         let instructor = { name: 'Luis' }
