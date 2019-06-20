@@ -4,10 +4,9 @@ const supertest = require('supertest');
 
 const { insert, remove } = require('./instructors-model')
 
-describe('instructors model', () => {
-    beforeEach(async () => {
-        await db('instructors').truncate()
-    })
+
+afterEach(async () => {
+    await db('instructors').truncate()
 })
 
 describe('insert()', () => {
@@ -38,5 +37,12 @@ describe('delete()', () => {
         await supertest(server)
         .del('/api/instuctors/1')
         expect(404)
+    })
+
+    it('should respond a 200 if deleted successfully', async () => {
+        let instructor = { name: 'Luis' }
+        await insert(instructor)
+        let response = await supertest(server).delete( `/api/instructors/1` )
+        expect(response.status).toBe(200)
     })
 })
