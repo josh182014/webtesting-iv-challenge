@@ -8,7 +8,7 @@ server.use(express.json());
 server.use('/api/instructors', instructorsRouter)
 
 server.get('/', (req, res) => {
-  res.status(200).json({ api: 'up' });
+  res.status(200).json('ITS RUNNING');
 });
 
 module.exports = server;
